@@ -54,7 +54,12 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        index = self._hash_mod(key)
+
+        if self.storage[index]:
+            print("index already exists")
+        else:
+            self.storage[index] = LinkedPair(key, value)
 
 
 
@@ -77,7 +82,13 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        index = self._hash_mod(key)
+
+        if self.storage[index]:
+            if self.storage[index].key == key:
+                return self.storage[index].value
+        else:
+            return None
 
 
     def resize(self):
@@ -118,3 +129,4 @@ if __name__ == "__main__":
     print(ht.retrieve("line_3"))
 
     print("")
+
